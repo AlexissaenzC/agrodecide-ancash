@@ -1,0 +1,41 @@
+.scene-wrap{height:390px!important;isolation:isolate;background:radial-gradient(ellipse at 50% 65%,#d9e2cc 0%,#edf0e4 48%,#f2f3e9 78%);border:1px solid #dfe5d5;border-radius:18px;margin-top:26px;overflow:visible;margin-bottom:0}
+.scene-wrap::after{content:'';position:absolute;z-index:0;left:15%;right:15%;bottom:13%;height:19%;border-radius:50%;background:#425c3d20;filter:blur(15px);pointer-events:none}
+#valley,#valley-fallback{border-radius:18px;z-index:1}
+#valley-fallback{object-fit:contain}
+#valley{touch-action:pan-y}
+.scene-topline{position:absolute;z-index:3;top:17px;left:19px;right:19px;display:flex;justify-content:space-between;gap:12px;align-items:center;pointer-events:none}
+.scene-topline strong{font-size:11px;font-weight:700;color:#456349;letter-spacing:.6px}
+.scene-topline span{font-size:9px;letter-spacing:1px;padding:5px 8px;background:#ffffffb3;border:1px solid #d8e0cf;border-radius:20px;color:#5f725b}
+.scene-point{transform:translate(-50%,-110%);border-radius:9px;background:#fffef6;color:#294e38;box-shadow:0 4px 14px #253f2820;min-height:44px;padding:8px 12px;font-size:11px;white-space:nowrap;transition:background .15s,color .15s;right:auto;max-width:45%}
+.scene-point::after{content:'';position:absolute;left:calc(50% - 4px);bottom:-5px;width:8px;height:8px;background:inherit;transform:rotate(45deg);border-right:1px solid #cad7bc;border-bottom:1px solid #cad7bc}
+.scene-point[aria-pressed=true]{background:#244e3e;color:white;border-color:#244e3e}
+.scene-point[aria-pressed=true]{transform:translate(-50%,15%)}
+.scene-static .p3{left:23%;top:62%}
+.scene-vehicle{position:absolute;z-index:3;font-size:28px;transform:translate(-50%,-75%);pointer-events:none;filter:drop-shadow(0 3px 2px #243d352e)}
+.scene-speech{position:absolute;z-index:4;max-width:210px;min-width:140px;transform:translate(-50%,-110%);background:#fffef6f5;border:1px solid #d2dcc8;border-radius:12px 12px 12px 2px;padding:10px 13px;font-size:11px;font-weight:600;color:#385037;line-height:1.5;text-align:center;box-shadow:0 5px 15px #23412814;pointer-events:none}
+.scene-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;align-items:center}
+.scene-controls button{font-size:12px;min-height:44px;padding:10px 13px}
+.scene-controls .quiet{margin-left:auto}
+.scene-stage{font-size:12px;font-weight:700;color:#294d37;margin:3px 0 6px}
+.scene-quotes{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0;margin:13px 0 0;gap:8px}
+.scene-quotes li{background:#ffffff9e;border:1px solid #d8dfce;border-radius:8px;padding:10px 9px;min-width:0}
+.scene-quotes span,.scene-quotes strong,.scene-quotes small{display:block;overflow-wrap:anywhere}
+.scene-quotes span{font-size:11px;color:#5f725a}.scene-quotes strong{font-size:14px;margin:6px 0;color:#284b34}.scene-quotes small{font-size:9px;line-height:1.5;color:#64725b}
+.scene-quotes li.tour-best{border-color:#789866;background:#e2ecd5}.scene-quotes li.tour-best strong{color:#234d32}
+@media(max-width:600px){.scene-speech{font-size:10px;max-width:165px;min-width:120px;padding:8px 10px}.scene-controls{gap:6px}.scene-controls button{font-size:11px;padding:10px}.scene-quotes{gap:5px}.scene-quotes li{padding:9px 6px}.scene-quotes strong{font-size:12px}}
+.scene-static .p1{left:64%;top:50%}.scene-static .p2{left:53%;top:70%}
+.scene-caption{bottom:13px;font-size:9px;letter-spacing:1px;color:#546c50;padding-inline:12px}
+.scene-explanation{margin:12px 0 0;border-left:3px solid #ba7957;padding:9px 14px;background:#eeefe3;border-radius:0 8px 8px 0}
+.scene-explanation .scene-example{font-size:10px;letter-spacing:1px;font-weight:700;color:#6a775b;margin:0 0 5px}
+#scene-info{position:static;max-width:none;background:transparent;padding:0;margin:0;color:#42593f;font-size:12px;line-height:1.7}
+@media(min-width:1450px){.scene-wrap{height:430px!important}}
+@media(max-width:600px){.scene-wrap{height:300px!important}.scene-topline{top:12px;left:12px;right:12px}.scene-topline strong{font-size:10px}.scene-topline span{font-size:8px}.scene-point{font-size:10px;padding:8px 10px}.scene-caption{font-size:8px;letter-spacing:0}.scene-explanation{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){.scene-point{transition:none}}
+
+/* Only the current stop is labelled; dialogue stays outside the model. */
+.scene-point,.scene-point[aria-pressed=true]{min-height:26px;padding:3px 8px;font-size:10px;border-radius:6px;box-shadow:0 2px 5px #203d2814;transform:translate(-50%,-110%);max-width:100px}
+.scene-point::after{width:6px;height:6px;left:calc(50% - 3px);bottom:-4px}
+.scene-speech{position:static;transform:none;max-width:none;min-width:0;padding:8px 11px;margin:6px 0 9px;text-align:left;box-shadow:none;border:0;border-left:2px solid #9caf87;border-radius:0;background:#fffef6;color:#294b35;font-size:12px}
+.scene-route{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.scene-route path{fill:none;stroke:#b16b3d;stroke-width:2;stroke-dasharray:5 7;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.65}
+@media(max-width:600px){.scene-point,.scene-point[aria-pressed=true]{min-height:24px;font-size:9px;padding:3px 6px}.scene-speech{font-size:11px}}

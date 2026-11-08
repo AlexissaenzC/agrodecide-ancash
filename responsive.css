@@ -1,0 +1,89 @@
+/* Layout shared by desktop, tablet and phone. Loaded after the base theme. */
+html { min-width: 320px; }
+body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+main { flex: 1; width: 100%; }
+header { flex-wrap: wrap; height: auto; min-height: 100px; padding-block: 18px; }
+footer { flex-wrap: wrap; }
+.login-layout, #workspace { width: 100%; }
+.login-layout { grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1fr); }
+.app-grid > *, .app-grid > div > *, .login-layout > *, .section-head > *,
+.workspace-heading > *, .buyer-row > *, .product dl > div, .sim-controls > * { min-width: 0; }
+.section-head { flex-wrap: wrap; }
+.bubble, .product dd, .buyer-row button, .section-head h2, .comparison-box th,
+.comparison-box td, #saved-list button { overflow-wrap: anywhere; }
+.workspace-heading > button, #chat-form > button { flex-shrink: 0; }
+.comparison-box table { table-layout: fixed; }
+.comparison-box th:first-child { width: 34%; }
+.dialog-actions { flex-wrap: wrap; }
+dialog { overflow-y: auto; max-height: 90dvh; }
+
+/* PC: a permanent product column and a spacious working area. */
+@media (min-width: 1025px) {
+  #workspace { max-width: 1600px; padding-inline: clamp(32px, 4vw, 72px); }
+  .app-grid { grid-template-columns: 280px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .app-grid > aside { position: sticky; top: 24px; }
+  #messages { height: clamp(360px, 48vh, 650px); }
+  .bubble { max-width: min(85%, 760px); font-size: 15px; }
+  #buyer-map { max-height: 620px; }
+  .scene-wrap { height: clamp(300px, 28vw, 420px); }
+}
+
+/* Tablet: the product summary sits above the conversation or map. */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #workspace { padding: 30px 4%; }
+  .app-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .app-grid > aside { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+  .product { grid-row: span 2; }
+  .product dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+  .aside-note { display: none; }
+  .saved { margin: 0; }
+  .app-grid > aside > .quiet { grid-column: 2; }
+  #messages { height: 420px; }
+  .tabs button { font-size: 13px; }
+}
+@media (max-width: 900px) {
+  .login-layout { grid-template-columns: minmax(0, 1fr); max-width: 680px; gap: 30px; }
+  .login-card { width: 100%; max-width: 520px; margin-inline: auto; }
+  .intro h1 { font-size: clamp(36px, 6vw, 48px); }
+}
+
+/* Phone: stacked panels and comfortable controls, without hiding content. */
+@media (max-width: 600px) {
+  header { min-height: 80px; padding: 14px 5%; gap: 10px; }
+  .brand { font-size: 20px; }
+  #logout { margin-left: auto; }
+  .demo-badge { order: 3; max-width: 100%; margin-left: 0; font-size: 11px; }
+  #workspace { padding: 26px 4%; }
+  .app-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .workspace-heading { flex-wrap: wrap; }
+  .workspace-heading h1 { font-size: clamp(25px, 7vw, 32px); }
+  .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; overflow: visible; }
+  .tabs button { white-space: normal; min-height: 58px; font-size: 12px; padding: 10px 4px; }
+  .product dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #messages { height: clamp(300px, 52dvh, 480px); }
+  #chat-form { flex-wrap: wrap; }
+  #chat-form textarea { flex: 1 1 100%; }
+  #chat-form .primary { flex: 1; }
+  input:not([type=checkbox]), select, textarea { font-size: 16px; }
+  .voice-options { gap: 8px; }
+  .voice-options button, .voice-options label { min-height: 44px; display: inline-flex; align-items: center; font-size: 12px; }
+  .map-filters { padding-inline: 16px; }
+  .map-filters > label { width: 100%; }
+  .map-tools { position: static; display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; background: #e4e9d7; }
+  .map-tools button { width: 44px; min-height: 44px; font-size: 17px; }
+  .legend { gap: 12px; padding-inline: 16px; }
+  .buyer-row { grid-template-columns: 24px minmax(0, 1fr); }
+  .buyer-row .money { grid-column: 2; white-space: normal; }
+  .sim-controls { grid-template-columns: minmax(0, 1fr); }
+  .comparison-box table { font-size: 12px; }
+  .comparison-box th, .comparison-box td { padding: 10px 3px; }
+  .comparison-box h3 { font-size: 16px; }
+  .scene-caption { font-size: 9px; letter-spacing: 0; padding-inline: 10px; }
+}
+@media (max-width: 380px) {
+  .product dl { grid-template-columns: minmax(0, 1fr); }
+  .detail-grid { grid-template-columns: minmax(0, 1fr); }
+  .intro-foot { flex-wrap: wrap; }
+  .login-card { padding-inline: 20px; }
+  .local-note { margin-inline: -20px; }
+}

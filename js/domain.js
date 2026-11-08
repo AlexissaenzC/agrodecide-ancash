@@ -1,0 +1,18 @@
+export const money=n=>new Intl.NumberFormat('es-PE',{style:'currency',currency:'PEN'}).format(n);
+export function evaluate(product,buyer,overrides={}){
+ const b={...buyer,...overrides};let reason='';
+ if(!product.variety||!product.quality||!product.quantity||!product.origin)reason='Primero confirma los datos del lote.';
+ else if(!b.varieties.includes(product.variety))reason='No acepta esta variedad.';
+ else if(!b.qualities.includes(product.quality))reason='No acepta esta calidad.';
+ else if(product.quantity<b.min)reason=`Recibe desde ${b.min} kilos.`;
+ else if(product.quantity>b.max)reason=`Capacidad de ${b.max} kilos: no recibe el lote completo.`;
+ const compatible=!reason;const sufficient=Number.isFinite(b.price);const gross=compatible&&sufficient?Math.round(product.quantity*b.price*100)/100:null;
+ const costs=Math.round((b.transport+b.commission+b.other)*100)/100;const net=gross===null?null:Math.round((gross-costs)*100)/100;
+ return {...b,compatible,reason:reason||(!sufficient?'Falta el precio de la oferta.':''),gross,costs,net,belowMinimum:product.minimum!=null&&sufficient&&b.price<product.minimum};
+}
+export function ranked(rows){return rows.filter(b=>b.compatible&&b.net!==null).sort((a,b)=>b.net-a.net||a.id.localeCompare(b.id));}
+export function topExplanation(rows){const r=ranked(rows);if(!r.length)return 'Ningún comprador tiene un monto comparable para este lote. Revisa cantidad, variedad, calidad o los precios faltantes.';const winners=r.filter(b=>b.net===r[0].net);const b=r[0];return `${winners.length>1?'Hay un empate entre '+winners.map(x=>x.name).join(' y '):b.name+' deja el mayor monto'}: ${money(b.net)}. Cobro por la papa: ${money(b.gross)}; transporte ${money(b.transport)}, comisiones ${money(b.commission)} y otros gastos ${money(b.other)}.${r[1]&&r[1].net!==b.net?' Son '+money(b.net-r[1].net)+' más que '+r[1].name+'.':''}${b.net<0?' Los gastos superan al cobro: tendrías que cubrir la diferencia.':''} Aún falta descontar producción. Estado de la oferta: ${b.status}; no es una compra confirmada.`;}
+export function intensity(value,rows){const values=rows.filter(b=>b.net!==null&&b.compatible).map(b=>b.net);if(value===null||!values.length)return '#b6bcaf';const lo=Math.min(...values),hi=Math.max(...values);const t=hi===lo?.65:(value-lo)/(hi-lo);return `rgb(${Math.round(190-154*t)},${Math.round(211-126*t)},${Math.round(147-91*t)})`;}
+export function normalize(text){return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
+const units={cero:0,uno:1,un:1,una:1,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10,once:11,doce:12,trece:13,catorce:14,quince:15,dieciseis:16,diecisiete:17,dieciocho:18,diecinueve:19,veinte:20,veintiuno:21,veintidos:22,veintitres:23,veinticuatro:24,veinticinco:25,veintiseis:26,veintisiete:27,veintiocho:28,veintinueve:29,treinta:30,cuarenta:40,cincuenta:50,sesenta:60,setenta:70,ochenta:80,noventa:90,cien:100,ciento:100,doscientos:200,trescientos:300,cuatrocientos:400,quinientos:500,seiscientos:600,setecientos:700,ochocientos:800,novecientos:900};
+export function quantityFrom(text){const s=normalize(text);if(/\bo\b|tonelada|medio|media/.test(s))return {ambiguous:true};const nums=s.match(/-?\d+(?:[.,]\d+)*/g);if(nums){if(nums.length>1)return {ambiguous:true};if(/[.,]/.test(nums[0]))return {ambiguous:true};return {value:Number(nums[0])};}let total=0,group=0,seen=false;for(const word of s.split(/[^a-z]+/)){if(word==='mil'){total+=(group||1)*1000;group=0;seen=true;}else if(word in units){group+=units[word];seen=true;}else if(seen&&word!=='y')break;}return seen?{value:total+group}:{};}

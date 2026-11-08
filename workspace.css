@@ -1,0 +1,234 @@
+/* The workspace shares the compact cream, green and terracotta entry style. */
+body:has(#workspace:not([hidden])) header{min-height:64px;padding-block:9px}
+body:has(#workspace:not([hidden])) .brand-icon{font-size:32px}
+body:has(#workspace:not([hidden])) footer{min-height:32px;padding-block:8px;font-size:10px}
+#workspace{max-width:1600px;padding:14px 3.5% 12px}
+.workspace-heading{gap:12px;min-height:40px;align-items:center}
+.workspace-heading .eyebrow{font-size:9px;margin-bottom:6px;letter-spacing:1.5px}
+.workspace-heading h1{font-size:clamp(24px,2.3vw,33px);margin:0;line-height:1.2}
+.workspace-actions{display:flex;gap:8px;flex-wrap:wrap}
+.workspace-actions button{min-height:38px;font-size:12px;padding:8px 12px}
+.workspace-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.workspace-metrics article{padding:8px 14px;background:#fffef9;border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center}
+.workspace-metrics article:first-child{border-left:3px solid #b87453}
+.workspace-metrics article:last-child{background:#eaf0e0;border-color:#c8d7bb}
+.workspace-metrics .metric-label{font-size:10px;color:#61735b;grid-column:1}
+.workspace-metrics strong{font:700 21px Manrope,system-ui;letter-spacing:-.6px;grid-column:1}
+.workspace-metrics small{font-size:10px;color:#65745f;grid-column:1;overflow-wrap:anywhere}
+.workspace-metrics button{grid-column:2;grid-row:1/4;min-height:36px;padding:6px 9px;font-size:11px;background:#fffef5;border:1px solid #c8d4bd;color:var(--green)}
+#workspace .tabs{margin:0 0 14px;gap:24px}
+#workspace .tabs button{font-size:12px;padding:10px 2px;min-height:40px}
+.mobile-lot-toggle{display:none}
+#workspace .app-grid{grid-template-columns:230px minmax(0,1fr);gap:20px;align-items:stretch}
+#workspace aside{position:static;min-height:0;display:block}
+#workspace .product{padding:18px;background:linear-gradient(155deg,#fffef9,#f0f2e5)}
+#workspace .product .eyebrow{font-size:9px;margin-bottom:9px}
+#workspace .product h2{font-size:18px;margin-bottom:10px}
+#workspace .product dl{margin:12px 0;display:block}
+#workspace .product dl div{padding:8px 0;font-size:12px}
+#workspace .product .outline{min-height:36px;font-size:12px;padding:8px 12px}
+#workspace .product .fine{margin:9px 0 0;font-size:10px}
+.lot-progress{margin:11px 0 13px}
+.lot-progress label{font-size:10px;margin:0 0 5px;color:#65735b}
+.lot-progress progress{width:100%;height:6px;display:block;accent-color:#486c3d;border:0;border-radius:10px;overflow:hidden;background:#dce4d2}
+.lot-progress progress::-webkit-progress-bar{background:#dce4d2}.lot-progress progress::-webkit-progress-value{background:#648751;border-radius:10px}
+#lot-next{margin-top:10px;font-size:12px;min-height:37px}
+#workspace .aside-note{padding:14px 8px}
+#workspace .aside-note>span{display:none}
+#workspace .aside-note h3{font-size:13px;margin:0 0 5px}
+#workspace .aside-note p{font-size:11px;margin:0;line-height:1.5}
+#workspace .saved{padding:9px 14px;margin:0 0 4px;font-size:12px}
+#workspace .saved summary{min-height:34px}
+#workspace .section-head{padding:12px 16px;gap:10px}
+#view-chat .section-head>div>p{display:none}
+#workspace .section-head h2{font-size:17px}
+#workspace .section-head p{font-size:10px;line-height:1.5}
+.assistant-avatar{font-size:22px;padding:6px 11px}
+.assistant-online{font-size:10px;color:#618152;display:flex;align-items:center;gap:6px;margin-top:3px}
+.assistant-online::before{content:'';width:6px;height:6px;border-radius:50%;background:#6c9256}
+#workspace #messages{padding:18px;gap:13px;overscroll-behavior:contain}
+#workspace .bubble{max-width:min(90%,760px);font-size:13px;padding:11px 15px;line-height:1.65}
+#workspace .chips{padding:5px 18px 12px;gap:6px}
+#workspace .chips button{font-size:11px;min-height:34px;padding:7px 11px}
+#workspace .composer-area{padding:12px 18px}
+#workspace #chat-form textarea{min-height:48px;max-height:100px;font-size:13px;padding:10px 12px}
+#workspace #chat-form button{min-height:42px;padding:9px 12px;font-size:12px}
+#workspace .voice-options button{font-size:10px;min-height:28px}
+#workspace .composer-area>.fine{font-size:9px;margin:4px 0 0}
+.typing-indicator{display:flex;align-items:center;gap:5px;padding:0 20px 10px;color:#64745c;font-size:10px}
+.typing-indicator i{width:5px;height:5px;background:#738b62;border-radius:50%;animation:typing-dot 1s ease-in-out infinite}
+.typing-indicator i:nth-child(2){animation-delay:.15s}.typing-indicator i:nth-child(3){animation-delay:.3s}
+@keyframes typing-dot{50%{opacity:.3;transform:translateY(-3px)}}
+#workspace .view:not([hidden]){animation:workspace-in .2s ease-out}
+@keyframes workspace-in{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+#view-map{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.85fr);gap:16px;align-items:stretch}
+#workspace .map-panel{display:flex;flex-direction:column;min-width:0}
+#workspace .map-panel .section-head{padding:13px 16px}
+#workspace .map-panel .section-head button{display:none}
+#workspace .map-filters{padding:0 16px 10px;gap:8px}
+#workspace .map-filters label{margin-top:8px;font-size:11px}
+#workspace .map-filters select{min-height:36px;font-size:11px;padding:7px 10px;margin-top:5px}
+#workspace .map-filters>span{font-size:10px}
+#workspace .map-canvas{flex:1;min-height:230px}
+#workspace #buyer-map{height:100%;max-height:none;min-height:230px}
+#workspace .legend{padding:10px 13px 0;gap:10px;font-size:9px}
+#workspace .map-panel>.fine{font-size:9px;padding:0 13px 8px;margin:7px 0 0}
+#workspace .map-tools{grid-template-columns:repeat(2,32px);gap:4px;top:9px;right:9px}
+#workspace .map-tools button{min-height:32px;padding:4px;font-size:13px}
+#workspace .results{margin:0;padding:16px;min-width:0}
+#workspace .results .section-head{padding:0 0 12px;gap:8px}
+#workspace .results h2{font-size:17px}
+#workspace .results .eyebrow{font-size:8px;margin-bottom:7px}
+#workspace #compare{min-height:35px;font-size:11px;padding:8px 10px}
+#ranking-note{font-size:11px;line-height:1.6;background:#eef2e6;border-radius:7px;padding:10px;margin:12px 0}
+.compare-selection{font-size:10px;color:#69775f;margin:6px 0}
+.buyer-row{transition:background .15s,border-color .15s;border-radius:6px}
+#workspace .buyer-row{grid-template-columns:22px minmax(0,1fr) auto;padding:11px 4px;gap:8px}
+#workspace .buyer-row:has(input:checked){background:#edf2e4}
+#workspace .buyer-row.is-selected{box-shadow:inset 3px 0 #b87453;background:#f4eddf}
+#workspace .buyer-row small{font-size:10px}
+#workspace .buyer-row .money{font-size:16px}
+#workspace .buyer-row button{font-size:12px!important}
+.workspace-dialog{width:min(640px,94vw);padding:0;max-height:88dvh;overflow:auto;background:#fffef9}
+.workspace-dialog .detail{border:0;padding:24px;margin:0}
+.dialog-close{float:right;min-height:32px;width:32px;padding:3px;font-size:21px;background:#eef1e5;color:#38543a;margin-left:12px}
+.workspace-dialog h2{font-size:22px}.workspace-dialog .eyebrow{font-size:9px}
+.workspace-dialog .comparison-box{margin:0;border-radius:0;padding:24px}
+.workspace-dialog .detail-grid{background:#f0f3e7;padding:10px 16px;border-radius:8px}
+.workspace-dialog .sim-controls{gap:0 16px}.workspace-dialog .sim-controls label{font-size:12px}
+.workspace-dialog input{min-height:40px;padding:9px 12px}
+#view-history{padding:20px;min-width:0}
+.history-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.history-heading .eyebrow{font-size:9px;margin-bottom:7px}.history-heading h2{font-size:22px;margin-bottom:0}
+.history-period{display:flex;gap:5px;background:#edf1e4;border-radius:8px;padding:4px}
+.history-period button{min-height:33px;font-size:12px;padding:7px 14px;background:transparent;color:#536849}
+.history-period button.active{background:#244e3e;color:#fff}
+.history-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 0}
+.history-metrics div{background:#f1f3e9;padding:10px 13px;border-radius:8px}
+.history-metrics span{display:block;font-size:10px;color:#66745d}.history-metrics strong{display:block;margin-top:4px;font-size:18px}
+#history-chart{max-height:280px;margin-top:10px}
+#history-chart circle{cursor:pointer;outline:none}#history-chart circle:focus-visible{stroke:#244e3e;stroke-width:3}
+#history-active-value{font-size:12px;color:#526c46;min-height:20px;margin:0 0 5px}
+.history-details summary{font-size:12px;min-height:32px;padding:6px 0}
+#view-history>p{font-size:12px}
+@media(min-width:1101px){
+ #workspace .app-grid{height:max(340px,calc(100svh - 400px))}
+ #workspace aside{overflow:auto;overscroll-behavior:contain;padding-right:4px}
+ .workspace-content{min-height:0}
+ #view-chat{height:100%;display:flex;flex-direction:column}
+ #workspace #messages{height:auto;min-height:100px;flex:1}
+ #view-map{height:100%;min-height:0}
+ #workspace .results{overflow:auto;overscroll-behavior:contain}
+ #view-history{height:100%;overflow:auto}
+}
+@media(max-width:1100px){
+ #workspace .app-grid{grid-template-columns:190px minmax(0,1fr);gap:14px}
+ #workspace .product{padding:14px}
+ #view-map{grid-template-columns:minmax(0,1fr)}
+ #workspace .results{max-height:440px;overflow:auto}
+ #workspace #messages{height:clamp(220px,36svh,420px)}
+ #workspace .buyer-row .money{grid-column:auto}
+ .workspace-metrics article{padding:10px 12px}
+ .workspace-metrics strong{font-size:18px}
+}
+@media(max-width:760px){
+ #workspace{padding:18px 4%}
+ .workspace-heading{align-items:flex-start;flex-wrap:wrap}
+ .workspace-heading h1{font-size:25px}
+ .workspace-metrics{gap:7px;margin:12px 0}
+ .workspace-metrics article{display:block;padding:9px 10px}
+ .workspace-metrics strong{display:block;font-size:17px;margin-top:5px;white-space:normal;overflow-wrap:anywhere}
+ .workspace-metrics small{display:block;font-size:9px;margin-top:3px}
+ .workspace-metrics button{font-size:10px;margin-top:7px;padding:5px;min-height:30px}
+ .workspace-metrics .metric-label{font-size:9px}
+ #workspace .tabs{gap:8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+ #workspace .tabs button{font-size:11px;white-space:normal;min-height:45px}
+ #workspace .app-grid{grid-template-columns:minmax(0,1fr)}
+ .mobile-lot-toggle{display:block;width:100%;min-height:40px;font-size:12px;margin:0 0 12px}
+ #workspace aside{display:none}
+ #workspace.lot-expanded aside{display:block}
+ #workspace .product dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 15px}
+ #workspace .product h2{font-size:17px}
+ #workspace .product .lot-progress{margin:8px 0}
+ #workspace .product dl div{padding:6px 0}
+ #workspace .aside-note{display:none}
+ #workspace .saved{margin-top:10px}
+ #workspace #clear{min-height:30px}
+ #workspace #messages{height:clamp(220px,40svh,400px)}
+ #workspace .section-head{padding:13px}
+ #workspace .composer-area{padding:12px}
+ #workspace #chat-form textarea{font-size:16px}
+ #workspace .voice-options button{min-height:40px;font-size:11px}
+ #workspace .map-tools{position:static;display:flex;flex-wrap:wrap;padding:8px;gap:6px}
+ #workspace .map-tools button{width:40px;min-height:40px}
+ #workspace #buyer-map{height:300px}
+ #workspace .results{max-height:none}
+ #workspace .buyer-row .money{font-size:15px}
+ #view-history{padding:16px}
+ .history-metrics{gap:6px}.history-metrics div{padding:9px}.history-metrics strong{font-size:16px}
+ .workspace-dialog .detail,.workspace-dialog .comparison-box{padding:18px}
+ .workspace-dialog .sim-controls{grid-template-columns:minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){#workspace .view:not([hidden]),.typing-indicator i{animation:none}.buyer-row{transition:none}}
+
+/* Give the conversation and map the main share of the viewport. */
+#workspace{max-width:1800px;padding:10px 2.5% 12px}
+.workspace-heading h1{font-size:25px}
+.workspace-heading .eyebrow{margin-bottom:4px}
+.workspace-overview{margin:5px 0}
+.workspace-overview>summary{font-size:12px;color:#59704d;min-height:25px;padding:4px 0}
+#workspace .tabs{margin-bottom:10px}
+#workspace .app-grid{height:auto;min-height:0}
+.workspace-content{min-width:0;min-height:0}
+#view-chat{display:flex;flex-direction:column;height:max(560px,calc(100svh - 240px))}
+#workspace #messages{flex:1;height:auto;min-height:260px;padding:24px max(24px,calc((100% - 820px)/2));gap:20px}
+#workspace .bubble{font-size:16px;line-height:1.8;max-width:min(100%,820px);padding:12px 16px}
+#workspace .bubble:not(.user){background:transparent;border-radius:0;padding-inline:0}
+#workspace .bubble.user{max-width:85%;background:#eaf0e0;color:#244e3e;border-radius:18px}
+#workspace .bubble .byline{font-size:10px;margin-bottom:6px}
+#workspace .section-head h2{font-size:19px}
+#workspace .composer-area{padding:16px 24px;background:#fffefb}
+#workspace #chat-form{max-width:880px;margin-inline:auto}
+#workspace #chat-form textarea{font-size:16px;min-height:66px;padding:14px 16px;border-radius:14px}
+#workspace #chat-form button{min-height:46px;font-size:14px}
+#workspace .composer-area>#voice-status,#workspace .voice-options,#workspace .composer-area>.fine{max-width:880px;margin-inline:auto}
+#workspace .chips{padding:8px 24px 14px;justify-content:center}
+#workspace .chips button{font-size:13px;min-height:38px;padding:8px 13px}
+#view-map{grid-template-columns:minmax(0,1fr);height:auto;overflow:visible}
+#workspace .map-panel{min-height:0}
+#workspace .map-canvas{flex:none;height:clamp(460px,65svh,740px);min-height:460px}
+#workspace #buyer-map{height:100%;min-height:0;max-height:none;width:100%}
+#workspace .map-tools{grid-template-columns:repeat(2,42px)}
+#workspace .map-tools button{min-height:42px;font-size:16px}
+#workspace .map-filters select{font-size:14px;min-height:42px}
+#workspace .legend{font-size:11px;padding:12px 16px 0}
+#workspace .map-panel>.fine{font-size:11px;padding:0 16px 10px}
+#workspace .results{max-height:none;overflow:visible;margin-top:0}
+@media(min-width:1101px){
+ #workspace .app-grid{grid-template-columns:230px minmax(0,1fr);align-items:start}
+ #workspace aside{max-height:calc(100svh - 235px);overflow:auto;position:sticky;top:12px}
+ #view-chat{height:calc(100svh - 235px);min-height:520px}
+ #workspace #messages{min-height:200px}
+ #view-history{height:auto;min-height:480px;overflow:visible}
+}
+@media(max-width:1100px) and (min-width:761px){
+ #workspace .app-grid{grid-template-columns:minmax(0,1fr)}
+ #workspace aside{display:none}
+ .mobile-lot-toggle{display:block;width:100%;min-height:36px;font-size:12px;margin-bottom:10px}
+ #workspace.lot-expanded aside{display:block}
+ #view-chat{height:max(560px,calc(100svh - 260px))}
+}
+@media(max-width:760px){
+ #workspace{padding:14px 4%}
+ .workspace-heading h1{font-size:23px}
+ #view-chat{height:max(600px,calc(100svh - 250px))}
+ #workspace #messages{min-height:240px;padding:18px;gap:16px}
+ #workspace .bubble{font-size:16px;line-height:1.75}
+ #workspace .composer-area{padding:12px}
+ #workspace .chips{padding:6px 12px 12px;justify-content:flex-start}
+ #workspace .chips button{font-size:12px}
+ #workspace .map-canvas{height:auto;min-height:0}
+ #workspace #buyer-map{height:400px;min-height:0}
+ #workspace .map-tools{display:flex;position:static;grid-template-columns:none}
+ #workspace .map-tools button{width:42px;min-height:42px}
+}

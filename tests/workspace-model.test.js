@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {workspaceSummary,priceSeries,historySummary} from '../js/workspace-model.js';
+import {buyers} from '../js/data.js';
+import {evaluate} from '../js/domain.js';
+const product={variety:'Blanca',quality:'Primera',quantity:1000,origin:'Carhuaz',minimum:null};
+const rows=(p=product,override={})=>buyers.map(b=>evaluate(p,b,override[b.id]));
+test('el resumen distingue recopilar, confirmar y comparar',()=>{const empty={variety:null,quality:null,quantity:null,origin:null,minimum:null};const initial=workspaceSummary(empty,rows(empty));assert.equal(initial.progress,0);assert.equal(initial.best,null);const draft=workspaceSummary(product,rows(),{minimumAsked:true});assert.equal(draft.filled,5);assert.equal(draft.progress,90);assert.equal(draft.best,null);const ready=workspaceSummary(product,rows(),{minimumAsked:true,confirmed:true});assert.equal(ready.progress,100);assert.equal(ready.comparable,4);assert.equal(ready.best.id,'b2');assert.equal(ready.best.net,1490);});
+test('el panel cambia el mayor monto al cambiar cantidad o transporte',()=>{const options={minimumAsked:true,confirmed:true};const small={...product,quantity:500};assert.equal(workspaceSummary(small,rows(small),options).best.id,'b5');const changed=workspaceSummary(product,rows(product,{b2:{transport:600}}),options);assert.equal(changed.best.id,'b3');assert.equal(changed.best.net,1445);const huge={...product,quantity:100001};assert.equal(workspaceSummary(huge,rows(huge),options).best,null);});
+test('los siete días corresponden al final de la serie y los indicadores son calculados',()=>{const short=priceSeries(7),full=priceSeries(30);assert.equal(short.length,7);assert.equal(full.length,30);assert.deepEqual(short,full.slice(-7));assert.equal(short[0].day,24);const summary=historySummary(short);assert.equal(summary.minimum,Math.min(...short.map(p=>p.value)));assert.equal(summary.maximum,Math.max(...short.map(p=>p.value)));assert.ok(summary.average>=summary.minimum&&summary.average<=summary.maximum);});
